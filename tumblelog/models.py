@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 
 # Create your models here.
-class BasePost(models.Model):
+class Post(models.Model):
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField()
     slug = models.SlugField(max_length=40, unique=True)
@@ -12,13 +12,13 @@ class BasePost(models.Model):
         abstract = True
 
 
-class TextPost(BasePost):
+class TextPost(Post):
     text = models.TextField()
 
 
-class ImagePost(BasePost):
+class ImagePost(Post):
     image = models.ImageField()
 
 
-class LinkPost(BasePost):
+class LinkPost(Post):
     link = models.URLField()
